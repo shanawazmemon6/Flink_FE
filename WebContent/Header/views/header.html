@@ -37,9 +37,14 @@ background-color: transparent;
 <nav class="navbar navbar-inverse navbar-fixed-top trans">
   <div class="container-fluid">
     <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
       <a class="navbar-brand" href="#" style=" margin-left:20px; font-size:32px; color:yellow; font-family: Inder; "><b>Flink</b></a>
     </div>
- 
+ <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav navbar-right">
     <li  ><a  href="#/home"><b>Home</b></a></li>
           <li><a href="#/"><b>Job</b></a></li>
@@ -51,6 +56,7 @@ background-color: transparent;
       <li><a href="#/register"><span class="glyphicon glyphicon-user"></span> <b>Sign Up</b> </a></li>
       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> <b>Login</b> </a></li>
     </ul>
+  </div>
   </div>
 </nav>
 </body>
