@@ -1,34 +1,25 @@
+"use strict"
+app.controller('UserController',['userService','$http','$scope',function(userService,$scope,$http){
 
-(function(){
-	"use strict";
-app.controller('UserController',['UserService','$scope',function($scope,UserService) {
-	       var regalias=this;
-	       
-	       regalias.user={fname:'',lname:'',username:'',email:'',
-	    	password:'',mobile:'',role:'',gender:'',dateofbirth:'',address:'',is_online:'',status:''	   
-	    	   
-	 };
-	      
-regalias.getAllUsers = function (){
-    	 console.log("controller")
-    	UserService.fetchAllUsers().
-         then(
-        function(d) {
-			console.log("controller data")
+	this.getUsers=function(){
+	
+		console.log("controller");
+		userService.fetch()
+		.then(
+			function(d){
+				var user=d;
+				console.log(user)
+				
+			},
+			function(errorResponse) {
+				console.log("error")
 
-			regalias.user=d;
-        },
-        function(error) {
-			console.error("didn't get")
-		})
-    	 
-    	 
-    	 
-     }
-	      
-     }
-                
-          
-])
-})();
-
+			}
+		)
+		
+	
+		
+	}
+	
+	
+}])
