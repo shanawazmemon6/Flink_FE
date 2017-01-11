@@ -7,10 +7,23 @@
 .input-group{
 margin-top: 10px;
 }
+body{
+ min-height:500px;
+ background-image:url("./Resources/image/login.jpg");
+   background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+     
+
+
 </style>
+
 </head>
 <body>
 <div class="container" style="margin-top: 250px;" ng-controller='UserController as cntrl'>
+<div class="text-center">
+</div>
 <div class="col-sm-4 col-sm-offset-4">
 <form method="post" ng-submit='cntrl.submitlogin()'>
 <div class="input-group">
