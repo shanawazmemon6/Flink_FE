@@ -33,9 +33,9 @@ background-color: transparent;
 
 </head>
 
-<body ng-app="">
+<body >
 <nav class="navbar navbar-inverse navbar-fixed-top trans">
-  <div class="container-fluid">
+  <div class="container-fluid"   >
     <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
@@ -51,8 +51,9 @@ background-color: transparent;
           <li><a href="#/"><b>Blog</b></a></li>
           <li><a href="#/"><b>Event</b></a></li>
           
-          
     
+            <li><a href="#/register"><span class="glyphicon glyphicon-user"></span> <b>{{loginData.username}}</b> </a></li>
+      
       <li><a href="#/register"><span class="glyphicon glyphicon-user"></span> <b>Sign Up</b> </a></li>
       <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> <b>Login</b> </a></li>
     </ul>

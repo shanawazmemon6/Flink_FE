@@ -1,17 +1,23 @@
-"use strict";
-app.controller('UserController',['userService','$http','$scope',function(userService,$scope,$http){
+app.controller('UserController',['$cookies','userService','$rootScope','$http','$location',function($cookies,userService,$rootScope,$http,$location){
   
 	this.user={fname:'',lname:'',username:'',email:'',
-	    	password:'',mobile:'',role:'',gender:'',dateofbirth:'',address:'',is_online:'',status:''	   
+	    	password:'',mobile:'',role:'',gender:'',dateofbirth:'',address:'',is_online:'',status:'',error:'',code:''	   
 	    	   
 	 };
+	
 	console.log("controller is working")
+	 $rootScope.loginData=$cookies.getObject("loginData")
+		 if(typeof  $rootScope.loginData!='undefined')	{
+			 console.log($rootScope.loginData.username)
+		 }
+
+	//console.log("controller is working")
    //save user
 	this.saveUser=function(user){
 		userService.saveUser(user).then
 		(function(data){
-			var js=data
-			console.log(js)
+			var regresponse=data
+			console.log(regresponse)
 		},function(errorResponse){
 			console.log("controller error")
 		})
@@ -22,10 +28,31 @@ app.controller('UserController',['userService','$http','$scope',function(userSer
 	//login authentication
 	this.loginAuthentication=function(user){
 		console.log(user)
+		
 		userService.loginAuthentication(user).then
 		(function(data){
-			var logindat=data
-			console.log(logindat)
+			if(typeof $rootScope.loginData=='undefined' ){
+			if(data.code=='200'){
+				
+				this.user=data;
+				
+                 $cookies.putObject("loginData",this.user)
+              $rootScope.loginData=$cookies.getObject("loginData")
+                
+
+
+				console.log("login successful")
+			}
+			else 
+			{
+				console.log("login failed")
+				
+			}
+			}
+			else{
+				console.log("Your all already logged in")
+			}
+			
 		},function(errorResponse){
 			console.log("login error")
 		})

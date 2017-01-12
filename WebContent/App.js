@@ -1,10 +1,11 @@
-var app=angular.module('myApp',['ngRoute']);
+var app=angular.module('myApp',['ngRoute','ngCookies']);
 
 app.config(function($routeProvider) {
 	
 	$routeProvider
 	.when('/',{
-		templateUrl:'HomePage/home.html'
+		templateUrl:'HomePage/home.html',
+
 	})
 	.when('/home',{
 		templateUrl:'HomePage/home.html'

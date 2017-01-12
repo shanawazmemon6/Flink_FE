@@ -1,5 +1,5 @@
-"use strict";
-app.service('userService',['$http','$log',function($http,$scope,$log){
+
+app.service('userService',['$http',function($http){
 	var base_url='http://localhost:8086/Flink_BE/';
 	return{
 	
@@ -22,7 +22,7 @@ app.service('userService',['$http','$log',function($http,$scope,$log){
 		return $http.post(base_url+'loginAuthentication',user).then
 		(function(response) {
 			var re=response.data;
-			console.log("Login U In"+re)
+			console.log(re)
 			return response.data;
 			
 		},null)
