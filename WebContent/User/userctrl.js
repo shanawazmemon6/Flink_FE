@@ -5,7 +5,6 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 	    	   
 	 };
 	
-	console.log("controller is working")
 	 $rootScope.loginData=$cookies.getObject("loginData")
 		 if(typeof  $rootScope.loginData!='undefined')	{
 			 console.log($rootScope.loginData.username)
@@ -21,46 +20,48 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 		},function(errorResponse){
 			console.log("controller error")
 		})
-	
-		
-		
 	}
+	
 	//login authentication
 	this.loginAuthentication=function(user){
 		console.log(user)
 		
 		userService.loginAuthentication(user).then
 		(function(data){
-			if(typeof $rootScope.loginData=='undefined' ){
 			if(data.code=='200'){
-				
-				this.user=data;
-				
-                 $cookies.putObject("loginData",this.user)
+			  this.user=data;
+			  $cookies.putObject("loginData",this.user)
               $rootScope.loginData=$cookies.getObject("loginData")
-                
-
-
-				console.log("login successful")
+              $location.path("/");
+              console.log("login successful")
 			}
 			else 
 			{
 				console.log("login failed")
-				
 			}
-			}
-			else{
-				console.log("Your all already logged in")
-			}
+			
 			
 		},function(errorResponse){
 			console.log("login error")
 		})
 		
-		
 	}
 
-   
+   //logout
+	
+	this.logout=function(){
+		if(typeof $rootScope.loginData!='undefined' ){
+		   
+			$cookies.remove('loginData')
+			$rootScope.loginData='';
+            $location.path("/");
+			console.log("logout")
+		
+		}
+		
+		
+	}
+	
 	
 	//getAllUsers
 	this.getUsers=function(){
