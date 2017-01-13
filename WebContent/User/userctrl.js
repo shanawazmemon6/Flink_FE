@@ -1,9 +1,12 @@
 app.controller('UserController',['$cookies','userService','$rootScope','$http','$location',function($cookies,userService,$rootScope,$http,$location){
   
-	this.user={fname:'',lname:'',username:'',email:'',
+	var uctrl=this;
+	
+	uctrl.user={fname:'',lname:'',username:'',email:'',
 	    	password:'',mobile:'',role:'',gender:'',dateofbirth:'',address:'',is_online:'',status:'',error:'',code:''	   
 	    	   
 	 };
+	
 	
 	 $rootScope.loginData=$cookies.getObject("loginData")
 		 if(typeof  $rootScope.loginData!='undefined')	{
@@ -12,7 +15,7 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 
 	//console.log("controller is working")
    //save user
-	this.saveUser=function(user){
+	 uctrl.saveUser=function(user){
 		userService.saveUser(user).then
 		(function(data){
 			var regresponse=data
@@ -23,16 +26,29 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 	}
 	
 	//login authentication
-	this.loginAuthentication=function(user){
+	 uctrl.loginAuthentication=function(user){
 		console.log(user)
 		
 		userService.loginAuthentication(user).then
 		(function(data){
 			if(data.code=='200'){
-			  this.user=data;
+				uctrl.user=data;
 			  $cookies.putObject("loginData",this.user)
               $rootScope.loginData=$cookies.getObject("loginData")
-              $location.path("/");
+              console.log($rootScope.loginData.role)
+              if( $rootScope.loginData.role=='Student'){
+                 $location.path("/");
+              }
+              else if($rootScope.loginData.role=='Admin'){
+                  $location.path("/admin");
+
+            	  
+              }
+              else{
+                 
+
+            	  
+              }
               console.log("login successful")
 			}
 			else 
@@ -49,7 +65,7 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 
    //logout
 	
-	this.logout=function(){
+	 uctrl.logout=function(){
 		if(typeof $rootScope.loginData!='undefined' ){
 		   
 			$cookies.remove('loginData')
@@ -64,7 +80,7 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 	
 	
 	//getAllUsers
-	this.getUsers=function(){
+	 uctrl.getUsers=function(){
 		userService.fetchAllUsers()
 		.then(
 			function(d){
@@ -78,15 +94,15 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 			}//getUsers
 	  
 	// submit//register submit
-	   this.submit=function(){
-		   this.saveUser(this.user)
+	 uctrl.submit=function(){
+		 uctrl.saveUser(uctrl.user)
 
 		 
 		 
 	   }
 	   //login submit
-	   this.submitlogin=function(){
-		   this.loginAuthentication(this.user)
+	 uctrl.submitlogin=function(){
+		 uctrl.loginAuthentication(uctrl.user)
 	   }
 	
 }])

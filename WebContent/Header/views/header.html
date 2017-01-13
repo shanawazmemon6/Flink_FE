@@ -45,18 +45,25 @@ background-color: transparent;
       <a class="navbar-brand" href="#" style=" margin-left:20px; font-size:32px; color:yellow; font-family: Inder; "><b>Flink</b></a>
     </div>
  <div class="collapse navbar-collapse" id="myNavbar">
-    <ul class="nav navbar-nav navbar-right">
-    <li  ><a  href="#/home"><b>Home</b></a></li>
-          <li><a href="#/"><b>Job</b></a></li>
-          <li><a href="#/"><b>Blog</b></a></li>
-          <li><a href="#/"><b>Event</b></a></li>
+    <ul class="nav navbar-nav navbar-right" >
+    
+          <li ng-hide="loginData.role=='Admin'" ><a  href="#/home"><b>Home</b></a></li>
+          <li ng-hide="loginData.role=='Admin'"><a href="#/"><b>Job</b></a></li>
+          <li ng-hide="loginData.role=='Admin'"><a href="#/"><b>Blog</b></a></li>
+          <li ng-hide="loginData.role=='Admin'"><a href="#/"><b>Event</b></a></li>
+          
+          <!-- admin -->
+          <li ng-hide="loginData.role=='Student'|| !loginData.username"><a  href="#/admin"><b>Home</b></a></li>
+          <li ng-hide="loginData.role=='Student' || !loginData.username"><a href="#/"><b>Job</b></a></li>
+          <li ng-hide="loginData.role=='Student' || !loginData.username"><a href="#/"><b>Blog</b></a></li>
+          <li ng-hide="loginData.role=='Student' || !loginData.username"><a href="#/"><b>Event</b></a></li>
           
     
       <li class="dropdown" ng-show="loginData.username">
         <a class="dropdown-toggle" data-toggle="dropdown" ><b>{{loginData.username}}</b>
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> <b>Profile</b></a></li>
+          <li ng-hide="loginData.role=='Admin'"><a href="#"><span class="glyphicon glyphicon-wrench"></span> <b>Profile</b></a></li>
           <li><a href="" type="submit" ng-click="cntrl.logout()"><span class="glyphicon glyphicon-log-out"></span> <b>Logout</b></a></li>
           <li class="divider"></li>
           <li ng-show="loginData.username"><a href="#/register"><span class="glyphicon glyphicon-user"></span> <b>Sign Up</b> </a></li>
@@ -65,6 +72,7 @@ background-color: transparent;
       <li ng-hide="loginData.username"><a href="#/register"><span class="glyphicon glyphicon-user"></span> <b>Sign Up</b> </a></li>
       <li ng-hide="loginData.username"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> <b>Login</b> </a></li>
     </ul>
+    
   </div>
   </div>
 </nav>
