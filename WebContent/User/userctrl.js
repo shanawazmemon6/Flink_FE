@@ -33,13 +33,12 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 		(function(data){
 			if(data.code=='200'){
 				uctrl.user=data;
-			  $cookies.putObject("loginData",this.user)
+			  $cookies.putObject("loginData",uctrl.user)
               $rootScope.loginData=$cookies.getObject("loginData")
-              console.log($rootScope.loginData.role)
-              if( $rootScope.loginData.role=='Student'){
+              if( uctrl.user.role=='Student'){
                  $location.path("/");
               }
-              else if($rootScope.loginData.role=='Admin'){
+              else if(uctrl.user.role=='Admin'){
                   $location.path("/admin");
 
             	  
