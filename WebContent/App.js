@@ -23,6 +23,10 @@ app.config(function($routeProvider) {
 		templateUrl:'User/login.html',
 		 controller :'UserController'
 	})	
+	.when('/blog',{
+		templateUrl:'Blog/blog.html',
+		 controller :'UserController'
+	})	
 	.otherwise({
 		 redirectTo:'/'
 		 })

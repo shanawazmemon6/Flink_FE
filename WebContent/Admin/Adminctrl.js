@@ -6,7 +6,7 @@ app.controller('adminController',['adminService',function(adminService){
 	    	password:'',mobile:'',role:'',gender:'',dateofbirth:'',address:'',is_online:'',status:'',error:'',code:''	   
 	    	   
 	 };
-	ctrl.nav=[{status:'Users'},{status:'Admin'},{status:'Student'},{status:'Alumni'},{status:'Accepted'},{status:'Rejected'},{status:'Blocked'}]
+	ctrl.nav=[{status:'Users'},{status:'Admin'},{status:'Student'},{status:'Alumni'},{status:'Waiting'},{status:'Accepted'},{status:'Rejected'},{status:'Blocked'},{status:'Online'}]
 	   
 	
 	ctrl.cval=function(status){
@@ -47,7 +47,21 @@ app.controller('adminController',['adminService',function(adminService){
 			
 
 	}
+	//roleUpdate
 	
+	ctrl.roleupdate=function(username,role){
+		adminService.roleUpdate(username,role)
+		.then(
+			function(d){
+	             ctrl.getUsers();
+
+				},
+			function(errorResponse) {
+				console.log("error")
+			})//then
+			
+
+	}
 	
              ctrl.getUsers();
 

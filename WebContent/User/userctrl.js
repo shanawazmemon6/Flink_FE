@@ -18,10 +18,14 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 	 uctrl.saveUser=function(user){
 		userService.saveUser(user).then
 		(function(data){
+			if(data.code=='200'){
 			var regresponse=data
+            $location.path("/login");
+			}
 			console.log(regresponse)
 		},function(errorResponse){
 			console.log("controller error")
+			
 		})
 	}
 	
@@ -33,22 +37,39 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 		(function(data){
 			if(data.code=='200'){
 				uctrl.user=data;
-			  $cookies.putObject("loginData",uctrl.user)
-              $rootScope.loginData=$cookies.getObject("loginData")
-              if( uctrl.user.role=='Student'){
+				console.log(uctrl.user.status)
+			  
+              if( (uctrl.user.role=='Student'|| uctrl.user.role=='Alumni' || uctrl.user.role=='Alumni')  && (uctrl.user.status=='accepted')){
+            	  $cookies.putObject("loginData",uctrl.user)
+                  $rootScope.loginData=$cookies.getObject("loginData")
                  $location.path("/");
               }
               else if(uctrl.user.role=='Admin'){
+            	  $cookies.putObject("loginData",uctrl.user)
+                  $rootScope.loginData=$cookies.getObject("loginData")
                   $location.path("/admin");
 
             	  
               }
               else{
-                 
+                   if(uctrl.user.status=='rejected'){
+                	   console.log("rejected")
 
-            	  
+                	uctrl.error="Administrator had rejected you. Please contact your administrator"   
+                   }
+                   if(uctrl.user.status=='blocked'){
+                	   console.log("blocked")
+                	   uctrl.error="Administrator had blocked you. Please contact your administrator"   
+   
+                   }
+                   if(uctrl.user.status=='waiting'){
+                	   console.log("waiting")
+                	   uctrl.error="Registration not approved. Please contact your administrator"   
+   
+                   }
+            	
+                   $location.path("/login");
               }
-              console.log("login successful")
 			}
 			else 
 			{

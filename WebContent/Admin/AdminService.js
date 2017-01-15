@@ -11,7 +11,14 @@ app.service('adminService',['$http',function($http){
 			return response.data;
 		},null)
 	},
+	//role Update
+	roleUpdate:function(username,role){
 		
+		return $http.get(base_url+"role/"+username+"/"+role).then
+		(function(response) {
+			return response.data;
+		},null)
+	},
 		
    //fetchAllUser
 	fetchAllUsers:function(){

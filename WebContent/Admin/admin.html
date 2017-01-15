@@ -64,8 +64,13 @@ margin-top:10px;
      <div class="media-right">
      <input type="submit" ng-click="admin.statusupdate(user.username,'accepted')"  class="btn btn-success btn-block btnm" value="Accept" >
      <input type="submit" ng-click="admin.statusupdate(user.username,'blocked')"  class="btn btn-warning btn-block btnm" value="block" >
-      <input type="submit" ng-click="admin.statusupdate(user.username,'rejected')"  class="btn btn-danger btn-block btnm" value="Reject" >
-     
+     <input type="submit" ng-click="admin.statusupdate(user.username,'rejected')"  class="btn btn-danger btn-block btnm" value="Reject" >
+    <hr>
+     <input type="submit"  ng-hide="user.role=='Admin'"  ng-click="admin.roleupdate(user.username,'Admin')"   class="btn btn-success btn-block btnm" value="Make Admin" >
+     <input type="submit"  ng-hide="user.role=='Student'"  ng-click="admin.roleupdate(user.username,'Student')"   class="btn btn-warning btn-block btnm" value="Make Student" >
+      <input type="submit" ng-hide="user.role=='Alumni'"  ng-click="admin.roleupdate(user.username,'Alumni')"   class="btn btn-danger btn-block btnm" value="Make Alumni" >
+     <input type="submit"  ng-hide="user.role=='Employee'"  ng-click="admin.roleupdate(user.username,'Employee')"   class="btn btn-success btn-block btnm" value="Make Employee" >
+          
      </div>
      <hr>
   </div>
