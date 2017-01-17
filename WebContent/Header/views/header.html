@@ -59,8 +59,8 @@ background-color: transparent;
           <li ng-hide="loginData.role=='Student' ||loginData.role=='Alumni'||loginData.role=='Employee' || !loginData.username"><a href="#/"><b>Event</b></a></li>
           
     
-      <li class="dropdown" ng-show="loginData.username">
-        <a class="dropdown-toggle" data-toggle="dropdown" ><b>{{loginData.username}}</b>
+      <li class="dropdown"  ng-show="loginData.username">
+        <a href="" class="dropdown-toggle" data-toggle="dropdown" ><b>{{loginData.username}}</b>
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li ng-hide="loginData.role=='Admin'"><a href="#"><span class="glyphicon glyphicon-wrench"></span> <b>Profile</b></a></li>
