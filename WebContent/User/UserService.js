@@ -29,8 +29,22 @@ app.service('userService',['$http',function($http){
 	},
 	
 	
+	//session
+	validsession:function(){
+		return $http.get(base_url+'validsession').then
+		(function(response) {
+			return response.data;
+		},null)
 	
-		
+	},
+	//invalidate session
+	invalidatesession:function(){
+		return $http.get(base_url+'invalidatesession').then
+		(function(response) {
+			return response.data;
+		},null)
+	
+	},
 		
 		
    //fetchAllUser

@@ -82,12 +82,40 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 		})
 		
 	}
+	 
+	 //valid session
+	 uctrl.validsession=function(){
+		 userService.validsession().then
+		 (function(d) {
+			 uctrl.user=d
+			 if(uctrl.user.code=='200'){
+				 uctrl.loginAuthentication(uctrl.user);
+			 }
+			 else{
+				 uctrl.logout();
+			 }
+		})
+		 
+	 }
+	//invalidate session
+	 uctrl.invalidatesession=function(){
+		 userService.invalidatesession().then
+		 (function(d) {
+			 uctrl.user=d
+			 
+			
+			
+		})
+		 
+	 }
+	 uctrl.validsession();
 
    //logout
 	
 	 uctrl.logout=function(){
 		if(typeof $rootScope.loginData!='undefined' ){
-		   
+		uctrl.invalidatesession();
+		console.log(uctrl.user)
 			$cookies.remove('loginData')
 			$rootScope.loginData='';
             $location.path("/");
