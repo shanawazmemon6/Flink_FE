@@ -8,7 +8,7 @@ ctrl.upd='';
 ctrl.saveBlog=function(blog){
 BlogService.saveBlog(blog).then(
 	function(d) {
-	   console.log(ctrl.blog)
+		console.log(ctrl.blog)
 	   ctrl.fetchUserBlog();
 
 	})}

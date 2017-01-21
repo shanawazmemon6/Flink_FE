@@ -7,6 +7,7 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 	    	   
 	 };
 	
+	uctrl.newfriend=[];
 	
 	 $rootScope.loginData=$cookies.getObject("loginData")
 		 if(typeof  $rootScope.loginData!='undefined')	{
@@ -125,6 +126,8 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 		
 		
 	}
+
+	 
 	
 	
 	//getAllUsers

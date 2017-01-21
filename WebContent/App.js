@@ -1,33 +1,44 @@
-var app=angular.module('myApp',['ngRoute','ngCookies']);
+var app=angular.module('myApp',['ui.router','ngCookies']);
 
-app.config(function($routeProvider) {
+app.config(function($stateProvider, $urlRouterProvider) {
+	   $urlRouterProvider.otherwise('/home');
+	 $stateProvider
 	
-	$routeProvider
-	.when('/',{
-		templateUrl:'HomePage/home.html',
-
-	})
-	.when('/home',{
+	.state('home',{
+		url: '/home',
 		templateUrl:'HomePage/home.html'
 	})
-	.when('/admin',{
+	.state('admin',{
 		templateUrl:'Admin/admin.html',
 	    controller :'adminController'
 
 	})
-	.when('/register',{
+	.state('register',{
 		templateUrl:'User/register.html',
 		 controller :'UserController'
 	})	
-	.when('/login',{
+	
+	.state('login',{
 		templateUrl:'User/login.html',
 		 controller :'UserController'
 	})	
-	.when('/blog',{
+	.state('userprofile',{
+		templateUrl:'Profile/profile.html',
+		 controller :'ProfileController'
+
+})
+	
+	.state('userprofile.profileblog',{
 		templateUrl:'Blog/blog.html',
 		 controller :'BlogController'
 	})	
-	.otherwise({
-		 redirectTo:'/'
-		 })
+		.state('userprofile.friend',{
+		templateUrl:'Profile/friend.html',
+		 controller :'ProfileController'
+	})	
+	.state('blog',{
+		templateUrl:'User/homeblog.html',
+		 controller :'BlogController'
+	})	
+	
 })

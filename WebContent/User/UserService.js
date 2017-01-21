@@ -45,7 +45,8 @@ app.service('userService',['$http',function($http){
 		},null)
 	
 	},
-		
+	
+	
 		
    //fetchAllUser
 	fetchAllUsers:function(){

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title></title>
+<style >.map{
+    min-height:600px;
+    background-image: url("http://placehold.it/1366x250\000000");
+     background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+     
+  
+}
+
+</style>
+</head>
+<body >
+
+<div class="map" > 
+</div>
+
+<div class="container-fluid">
+<div class="col-sm-12" style="padding: 0px;">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">{{loginData.fname}} {{loginData.lname}}</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Job</a></li>
+     
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" ui-sref="userprofile.profileblog">Blog
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a type="button" data-toggle="modal" data-target="#addModal">Add Blog</a></li>
+          </ul>
+      </li>
+      <li><a ui-sref="userprofile.friend">Friends</a></li>
+    </ul>
+  </div>
+</nav>
+</div>
+</div>
+<div class="container">
+<div class="col-sm-4" >
+<div class="media">
+  <div class="media-left">
+ </div>
+  <div class="media-body">
+    <h3 class="media-heading"></h3>
+          <img src="http://placehold.it/200x200" class="media-object">
+     </div>
+</div>
+</div>
+<div class="col-sm-8">
+<ui-view>
+</ui-view>
+</div>
+</div>
+
+
+</body>
+</html>
