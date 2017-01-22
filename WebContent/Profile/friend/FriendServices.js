@@ -7,31 +7,25 @@ app.service('friendService',['$http',function($http){
 			return $http.post(base_url+'friendrequest',friend).then
 			(function(response){
 				return response.data;
-
-			})
-			
-		},
-		
-		
-		//new friend list
+				},null)},
+	//new friend list
 		newfriend:function(){
 		return $http.get(base_url+'newFriendDisplay').then
 		(function(response) {
 			return response.data;
-		},null)
-			
-		},
-			
-		
-		//friend list
+		},null)},
+	//friend list
 		friend:function(){
 		return $http.get(base_url+'friends').then
 		(function(response) {
 			return response.data;
-		},null)
-			
-		},
+		},null)},
+	 //Status update
+		statusUpdate:function(id,status){
+			return $http.put(base_url+'updateStatus'+'/'+id+'/'+status).then
+			(function(response) {
+				return response.data;
+			},null)}
 		
-		
-	}
-	}])
+	
+	}}])

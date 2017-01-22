@@ -25,17 +25,14 @@ app.controller('FriendController',['friendService',function(friendService){
 			console.log(navStatus);
 			fctrl.friend();
 			 fctrl.navStatus='Friends Request'
-		}
-			
-	}
+		}}
 	//new friend 
 	 fctrl.getNewFriend=function(){
 		 friendService.newfriend().then
 		 (function(d) {
 			fctrl.newfriend=d;
 			console.log(d)
-		})
-	 }
+		})}
 		
 		//friend 
 		 fctrl.friend=function(){
@@ -44,8 +41,7 @@ app.controller('FriendController',['friendService',function(friendService){
 				fctrl.friends=d;
 				
 				console.log(d)
-			})
-		 }
+			}) }
 		 fctrl.friend();
 
 	//friend request
@@ -55,14 +51,21 @@ app.controller('FriendController',['friendService',function(friendService){
 			console.log(d);
 			fctrl.friend();
 			 fctrl.getNewFriend();
-
+			 })}
+	
+	fctrl.statusUpdate=function(id,status){
+		console.log("status cntrl")
+		friendService.statusUpdate(id,status).then
+		(function(d) {
+			fctrl.friend();
+			 fctrl.getNewFriend();
+			console.log(d)
 		})
-		
 	}
 	
-	//submit
 	
-	fctrl.submit=function(friendid){
+	//submit
+    fctrl.submit=function(friendid){
 		fctrl.fjson={userid:"",friendid:friendid,status:"",id:""}
 		fctrl.friendrequest(fctrl.fjson);
 		

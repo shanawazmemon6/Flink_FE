@@ -52,7 +52,9 @@
     
  </div>
  <div class="media-right">
- <input type="submit" class="btn btn-success btn-block" ng-if="friend.status=='accepted'"  value="Friends">
+ <input type="submit" class="btn btn-success btn-block" ng-if="friend.status=='accepted'"  value="Friend">
+  <input type="submit" class="btn btn-danger btn-block" ng-if="friend.status=='accepted'"  value="Unfriend" ng-click="fctrl.statusUpdate(friend.id,'rejected')">
+ 
    </div>
       <hr ng-if="friend.status=='accepted'">
  
@@ -60,19 +62,17 @@
    
   <!--  Friends Request -->
   <div class="media" ng-if="fctrl.navStatus=='Friends Request'" ng-repeat="friend in fctrl.friends">
-  <div class="media-left" ng-if="friend.status=='waiting'">
+  <div class="media-left" ng-if="friend.status=='waiting' && friend.userid!=loginData.username ">
     <img src="http://placehold.it/150x150" class="media-object" style="width:60px">
   </div>
   <div class="media-body">
-    <h4 class="media-heading" ng-if="friend.friendid!=loginData.username && friend.status=='waiting'">{{friend.friendid}}</h4>
-        <h4 class="media-heading" ng-if="friend.friendid==loginData.username && friend.status=='waiting'">{{friend.userid}}</h4>
-    
- </div>
+    <h4 class="media-heading" ng-if="friend.friendid==loginData.username && friend.status=='waiting'">{{friend.userid}}</h4>
+  </div>
  <div class="media-right">
- <input type="submit" class="btn btn-success btn-block" ng-if="friend.status=='waiting'"  value="Accept">
-  <input type="submit" class="btn btn-warning btn-block" ng-if="friend.status=='waiting'"  value="Reject">
+ <input type="submit" class="btn btn-success btn-block" ng-if="friend.status=='waiting' && friend.userid!=loginData.username "  value="Accept" ng-click="fctrl.statusUpdate(friend.id,'accepted')">
+  <input type="submit" class="btn btn-warning btn-block" ng-if="friend.status=='waiting' && friend.userid!=loginData.username "  value="Reject" ng-click="fctrl.statusUpdate(friend.id,'rejected')">
    </div>
-      <hr ng-if="friend.status=='waiting'">
+      <hr ng-if="friend.status=='waiting' && friend.userid!=loginData.username ">
  
    </div>
 </div>
