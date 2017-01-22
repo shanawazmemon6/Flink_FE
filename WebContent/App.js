@@ -9,32 +9,35 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl:'HomePage/home.html'
 	})
 	.state('admin',{
+		url:'/admin',
 		templateUrl:'Admin/admin.html',
 	    controller :'adminController'
 
 	})
 	.state('register',{
+		url:'/register',
 		templateUrl:'User/register.html',
 		 controller :'UserController'
 	})	
 	
 	.state('login',{
+		url:'/login',
+
 		templateUrl:'User/login.html',
 		 controller :'UserController'
 	})	
 	.state('userprofile',{
 		templateUrl:'Profile/profile.html',
-		 controller :'ProfileController'
 
 })
 	
 	.state('userprofile.profileblog',{
-		templateUrl:'Blog/blog.html',
+		templateUrl:'Profile/blog/blog.html',
 		 controller :'BlogController'
 	})	
 		.state('userprofile.friend',{
-		templateUrl:'Profile/friend.html',
-		 controller :'ProfileController'
+		templateUrl:'Profile/friend/Friend.html',
+		 controller :'FriendController'
 	})	
 	.state('blog',{
 		templateUrl:'User/homeblog.html',

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title></title>
+<style>
+.col  a,
+.col  a:hover {
+    background-color: #f8f8f8;
+    color: #777777;
+}
+
+</style>
+</head>
+<body>
+<div class="container-fluid" ng-controller="FriendController as fctrl">
+  <input style="margin-bottom:15px;" type="input" class="form-control"  placeholder="search friends..">
+  
+  <ul class="nav nav-pills nav-justified col" >
+    
+    <li style="padding: 2px;" ng-repeat="nav in fctrl.navpill"><a type="submit" ng-click="fctrl.updateView(nav.nav)">{{nav.nav}}</a></li>
+    
+    
+  </ul>
+  <hr style="padding: 0px;">
+ 
+<div class="container-fluid" style="margin-top: 10px;">
+<div class="media" ng-if="fctrl.navStatus=='Find Friends'" ng-repeat="newfriend in fctrl.newfriend">
+  <div class="media-left">
+    <img src="http://placehold.it/150x150" class="media-object" style="width:60px">
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{newfriend}}</h4>
+ </div>
+ <div class="media-right">
+ <form ng-submit="fctrl.submit(newfriend)">
+ <input type="submit" class="btn btn-success btn-block"  value="Add Friend" >
+ </form>
+  <input type="submit" class="btn btn-warning btn-block"  value="View Profile">
+ </div>
+   <hr>
+ </div>
+  
+  <!--  Friends -->     
+  <div class="media" ng-if="fctrl.navStatus=='Friends'" ng-repeat="friend in fctrl.friends">
+  <div class="media-left" ng-if="friend.status=='accepted'">
+    <img src="http://placehold.it/150x150" class="media-object" style="width:60px">
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading" ng-if="friend.friendid!=loginData.username && friend.status=='accepted'">{{friend.friendid}}</h4>
+        <h4 class="media-heading" ng-if="friend.friendid==loginData.username && friend.status=='accepted'">{{friend.userid}}</h4>
+    
+ </div>
+ <div class="media-right">
+ <input type="submit" class="btn btn-success btn-block" ng-if="friend.status=='accepted'"  value="Friends">
+   </div>
+      <hr ng-if="friend.status=='accepted'">
+ 
+   </div>
+   
+  <!--  Friends Request -->
+  <div class="media" ng-if="fctrl.navStatus=='Friends Request'" ng-repeat="friend in fctrl.friends">
+  <div class="media-left" ng-if="friend.status=='waiting'">
+    <img src="http://placehold.it/150x150" class="media-object" style="width:60px">
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading" ng-if="friend.friendid!=loginData.username && friend.status=='waiting'">{{friend.friendid}}</h4>
+        <h4 class="media-heading" ng-if="friend.friendid==loginData.username && friend.status=='waiting'">{{friend.userid}}</h4>
+    
+ </div>
+ <div class="media-right">
+ <input type="submit" class="btn btn-success btn-block" ng-if="friend.status=='waiting'"  value="Accept">
+  <input type="submit" class="btn btn-warning btn-block" ng-if="friend.status=='waiting'"  value="Reject">
+   </div>
+      <hr ng-if="friend.status=='waiting'">
+ 
+   </div>
+</div>
+
+</div>
+</body>
+</html>

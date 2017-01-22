@@ -1,7 +1,7 @@
 app.controller('BlogController',['BlogService','$rootScope',function(BlogService,$location,$rootScope){
 	
+	console.log("blog controlller")
 	var ctrl=this;
-	
 ctrl.blog={blog_id:'',title:'',description:'',writtenby:'',date_blog:'',like_log:'',dislike_blog:'',brief:'',code:'',error:''}
       ctrl.blogs=[];
 ctrl.upd='';
@@ -67,8 +67,10 @@ ctrl.submit=function(){
 }
 }
 ctrl.reset=function(){
+	
 	ctrl.blog={blog_id:'',title:'',description:'',writtenby:'',date_blog:'',like_log:'',dislike_blog:'',brief:'',code:'',error:''}
-
+   
+	console.log("resetting")
 	
 }
 

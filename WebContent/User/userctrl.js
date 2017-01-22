@@ -55,21 +55,25 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
               else{
                    if(uctrl.user.status=='rejected'){
                 	   console.log("rejected")
+                   $location.path("/login");
 
                 	uctrl.error="Administrator had rejected you. Please contact your administrator"   
                    }
                    if(uctrl.user.status=='blocked'){
                 	   console.log("blocked")
+                	                      $location.path("/login");
+
                 	   uctrl.error="Administrator had blocked you. Please contact your administrator"   
    
                    }
                    if(uctrl.user.status=='waiting'){
                 	   console.log("waiting")
+                	     $location.path("/login");
+
                 	   uctrl.error="Registration not approved. Please contact your administrator"   
    
                    }
             	
-                   $location.path("/login");
               }
 			}
 			else 
@@ -83,7 +87,6 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 		})
 		
 	}
-	 
 	 //valid session
 	 uctrl.validsession=function(){
 		 userService.validsession().then
@@ -98,6 +101,8 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 		})
 		 
 	 }
+	 uctrl.validsession();
+
 	//invalidate session
 	 uctrl.invalidatesession=function(){
 		 userService.invalidatesession().then
@@ -109,7 +114,6 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 		})
 		 
 	 }
-	 uctrl.validsession();
 
    //logout
 	
