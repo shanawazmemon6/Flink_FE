@@ -7,6 +7,8 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 	    	   
 	 };
 	
+	
+	
 	uctrl.newfriend=[];
 	
 	 $rootScope.loginData=$cookies.getObject("loginData")
@@ -33,8 +35,7 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 	//login authentication
 	 uctrl.loginAuthentication=function(user){
 		console.log(user)
-		
-		userService.loginAuthentication(user).then
+	userService.loginAuthentication(user).then
 		(function(data){
 			if(data.code=='200'){
 				uctrl.user=data;
@@ -49,9 +50,7 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
             	  $cookies.putObject("loginData",uctrl.user)
                   $rootScope.loginData=$cookies.getObject("loginData")
                   $location.path("/admin");
-
-            	  
-              }
+            	  }
               else{
                    if(uctrl.user.status=='rejected'){
                 	   console.log("rejected")
@@ -71,22 +70,13 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
                 	     $location.path("/login");
 
                 	   uctrl.error="Registration not approved. Please contact your administrator"   
-   
-                   }
-            	
-              }
-			}
+                   }}}
 			else 
 			{
 				console.log("login failed")
-			}
-			
-			
-		},function(errorResponse){
+			}},function(errorResponse){
 			console.log("login error")
-		})
-		
-	}
+		})}
 	 //valid session
 	 uctrl.validsession=function(){
 		 userService.validsession().then
@@ -97,44 +87,28 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 			 }
 			 else{
 				 uctrl.logout();
-			 }
-		})
-		 
-	 }
-	 uctrl.validsession();
-
+			 }})}
+/*	 uctrl.validsession();
+*/
 	//invalidate session
 	 uctrl.invalidatesession=function(){
 		 userService.invalidatesession().then
 		 (function(d) {
 			 uctrl.user=d
-			 
-			
-			
-		})
-		 
-	 }
+			 })}
 
    //logout
-	
-	 uctrl.logout=function(){
+     uctrl.logout=function(){
 		if(typeof $rootScope.loginData!='undefined' ){
 		uctrl.invalidatesession();
 		console.log(uctrl.user)
 			$cookies.remove('loginData')
 			$rootScope.loginData='';
-            $location.path("/");
+            $location.path("/login");
 			console.log("logout")
 		
-		}
-		
-		
-	}
-
-	 
-	
-	
-	//getAllUsers
+		}}
+     //getAllUsers
 	 uctrl.getUsers=function(){
 		userService.fetchAllUsers()
 		.then(
@@ -151,13 +125,8 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 	// submit//register submit
 	 uctrl.submit=function(){
 		 uctrl.saveUser(uctrl.user)
-
-		 
-		 
-	   }
+		 }
 	   //login submit
 	 uctrl.submitlogin=function(){
 		 uctrl.loginAuthentication(uctrl.user)
-	   }
-	
-}])
+	   }}])

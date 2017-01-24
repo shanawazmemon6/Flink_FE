@@ -14,6 +14,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	    controller :'adminController'
 
 	})
+	
 	.state('register',{
 		url:'/register',
 		templateUrl:'User/register.html',
@@ -27,11 +28,20 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		 controller :'UserController'
 	})	
 	.state('userprofile',{
+		url:'/profile',
+
 		templateUrl:'Profile/profile.html',
 
 })
+.state('userprofile.chatforum',{
+		url:'/chatforum',
+		templateUrl:'ChatForum/chatforum.html',
+	    controller :'ChatForumCtrl'
+
+	})
 	
 	.state('userprofile.profileblog',{
+		url:'/blog',
 		templateUrl:'Profile/blog/blog.html',
 		 controller :'BlogController'
 	})	
@@ -40,8 +50,41 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		 controller :'FriendController'
 	})	
 	.state('blog',{
+		url:'/homeblog',
 		templateUrl:'User/homeblog.html',
 		 controller :'BlogController'
 	})	
+	
+})
+
+app.run(function($rootScope,$location,$http,$state){
+	
+	$rootScope.$on('$locationChangeStart',function(event,next,current){
+		var restrictedPage=$.inArray($location.path(),['','/','/home','/homeblog','/profile'])==-1;
+		console.log("navigation"+$location.path());
+		console.log("restrictedPage"+restrictedPage);
+		console.log($state);
+
+		var loggedIn=$rootScope.loginData;
+		console.log("username"+loggedIn);
+      
+		if(typeof loggedIn=='undefined'){
+			if(restrictedPage){
+				console.log("not navigating")
+
+			}
+			else{
+				$location.path('/login')
+				$state.go('login')
+				
+
+			}
+				
+		}
+		
+	})
+	
+	
+	
 	
 })
