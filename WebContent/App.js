@@ -14,7 +14,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	    controller :'adminController'
 
 	})
-	
+	.state('adminjob',{
+		url:'/adminjob',
+		templateUrl:'Job/Job.html',
+	    controller :'JobController'
+
+	})
 	.state('register',{
 		url:'/register',
 		templateUrl:'User/register.html',
@@ -29,8 +34,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	})	
 	.state('userprofile',{
 		url:'/profile',
-
-		templateUrl:'Profile/profile.html',
+       templateUrl:'Profile/profile.html',
 
 })
 .state('userprofile.chatforum',{
@@ -46,6 +50,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		 controller :'BlogController'
 	})	
 		.state('userprofile.friend',{
+			url:'/friend',
+
 		templateUrl:'Profile/friend/Friend.html',
 		 controller :'FriendController'
 	})	
@@ -60,7 +66,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 app.run(function($rootScope,$location,$http,$state){
 	
 	$rootScope.$on('$locationChangeStart',function(event,next,current){
-		var restrictedPage=$.inArray($location.path(),['','/','/home','/homeblog','/profile'])==-1;
+		var restrictedPage=$.inArray($location.path(),['','/','/home','/homeblog','/profile','/friend'])==-1;
 		console.log("navigation"+$location.path());
 		console.log("restrictedPage"+restrictedPage);
 		console.log($state);

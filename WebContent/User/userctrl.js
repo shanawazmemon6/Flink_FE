@@ -73,6 +73,8 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
                    }}}
 			else 
 			{
+	         	   uctrl.error="Please Register your account Or check your password"   
+
 				console.log("login failed")
 			}},function(errorResponse){
 			console.log("login error")
