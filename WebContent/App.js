@@ -20,6 +20,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	    controller :'JobController'
 
 	})
+		.state('homejob',{
+		url:'/homejob',
+		templateUrl:'Job/homejob.html',
+	    controller :'JobController'
+
+	})
 	.state('register',{
 		url:'/register',
 		templateUrl:'User/register.html',
@@ -63,15 +69,20 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	
 })
 
-app.run(function($rootScope,$location,$http,$state){
+app.run(function($rootScope,$location,$http,$state,$cookies){
 	
 	$rootScope.$on('$locationChangeStart',function(event,next,current){
-		var restrictedPage=$.inArray($location.path(),['','/','/home','/homeblog','/profile','/friend'])==-1;
+		var restrictedPage=$.inArray($location.path(),['','/','/home','/homeblog',
+		                                               '/profile','/friend',
+		                                               '/homejob','/blog',
+		                                               '/admin','/homejob',
+		                                               '/chatforum'
+		                                               ,'/adminjob'])==-1;
 		console.log("navigation"+$location.path());
 		console.log("restrictedPage"+restrictedPage);
 		console.log($state);
 
-		var loggedIn=$rootScope.loginData;
+		var loggedIn=$cookies.getObject("loginData");
 		console.log("username"+loggedIn);
       
 		if(typeof loggedIn=='undefined'){

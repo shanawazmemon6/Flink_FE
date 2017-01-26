@@ -42,10 +42,17 @@ ctrl.modBlog=function(Blog_id){
 	BlogService.editBlog(Blog_id).then
 	(function(d){
        ctrl.modblog=d;
-       
-		
-	})}
+     })}
 ctrl.fetchUserBlog();
+
+ctrl.allBlog=function(){
+	BlogService.allBlog().then
+	(function(d){
+       ctrl.allBlogs=d;
+       console.log(d);
+     })}
+
+ctrl.allBlog();
 
 ctrl.updateBlog=function(blog){
 	BlogService.updateBlog(blog).then(

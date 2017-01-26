@@ -48,15 +48,13 @@ background-color: transparent;
     <ul class="nav navbar-nav navbar-right" >
     
           <li ng-hide="loginData.role=='Admin'" ><a href=""  ui-sref="home"><b>Home</b></a></li>
-          <li ng-hide="loginData.role=='Admin'"><a href="" ><b>Job</b></a></li>
+          <li ng-hide="loginData.role=='Admin'"><a href="" ui-sref="homejob"><b>Job</b></a></li>
           <li ng-hide="loginData.role=='Admin'"><a href="" ui-sref="blog"><b>Blog</b></a></li>
-          <li ng-hide="loginData.role=='Admin'"><a href=""><b>Event</b></a></li>
           
           <!-- admin -->
           <li ng-hide="loginData.role=='Student' ||loginData.role=='Alumni'||loginData.role=='Employee' || !loginData.username"><a href=""  ui-sref="admin"><b>Home</b></a></li>
           <li ng-hide="loginData.role=='Student' ||loginData.role=='Alumni'||loginData.role=='Employee' || !loginData.username"><a href="" ui-sref="adminjob" ><b>Job</b></a></li>
           <li ng-hide="loginData.role=='Student' ||loginData.role=='Alumni'||loginData.role=='Employee' || !loginData.username"><a href="" ui-sref="blog"><b>Blog</b></a></li>
-          <li ng-hide="loginData.role=='Student' ||loginData.role=='Alumni'||loginData.role=='Employee' || !loginData.username"><a href="" ><b>Event</b></a></li>
           
     
       <li class="dropdown"  ng-show="loginData.username">

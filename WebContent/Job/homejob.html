@@ -2,17 +2,18 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Blog</title>
+<title>Job</title>
 <style>
-
+ 
+ 
     body{
-  background-image: url("./Resources/image/blog.jpg");
+  background-image: url("./Resources/image/job.png");
      background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     }
-  .gm{
+    .gm{
 margin-top:10px;
 }
 .panel-default{
@@ -20,14 +21,11 @@ min-width: 200px;
 min-height: 200px;
 }
 
-
 </style>
-
 </head>
-<body>
-<div class="container" ng-controller='BlogController as ctrl' style="margin:80px;">
-
-<div class="col-sm-8  col-sm-offset-5"  ng-repeat="blog in ctrl.allBlogs">
+<body >
+<div class="container" ng-controller='JobController as jctrl' style="margin:80px;">
+<div  class=" col-sm-8  col-sm-offset-5"  ng-repeat="job in jctrl.alljobs">
 <div class="panel panel-default">
 <div class="panel-body">
 <div class="media">
@@ -35,9 +33,10 @@ min-height: 200px;
     <img src="http://placehold.it/150x150" class="media-object" >
   </div>
   <div class="media-body">
-    <h4 class="media-heading">{{blog.writtenby}}</h4>
-    <p>{{blog.title}}</p>
-    <p>{{blog.description}}</p>
+    <h4 class="media-heading">{{job.title}}</h4>
+    <p>{{job.status}} ( {{job.date_time | date : "medium"}} )</p>
+    <p>{{job.qualification}}</p>
+      <input type="submit" ng-click="ctrl.modBlog(blog.blog_id)" class="btn btn-warning" data-toggle="modal" data-target="#myModal" value="More Info..">
     <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -45,11 +44,11 @@ min-height: 200px;
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">{{ctrl.modblog.title}}</h4>
-        <p>{{ctrl.modblog.description}}</p>
+        <h4 class="modal-title">{{job.title}}</h4>
+        <p>{{job.status}} ( {{job.date_time | date : "medium"}} )</p>
       </div>
       <div class="modal-body">
-        <p>{{ctrl.modblog.brief}}</p>
+        <p>{{job.description}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -64,21 +63,20 @@ min-height: 200px;
 </div>
   <div class="panel-footer">
   <div class="media">
+ 
   <div class="media-body">
-            
+<!--              <input  style="padding-top:6.5px; padding-bottom:6.5px; padding-left:20px; padding-right: 20px;" type="submit" class="btn btn-warning"   value="Apply" >
+ -->  
     </div>
-  <div class="media-right" >
-  
-        <input type="submit" ng-click="ctrl.modBlog(blog.blog_id)" class="btn btn-warning" data-toggle="modal" data-target="#myModal" value="More Info..">
-  
+   <div class="media-right" >
+    <input  style="padding-top:6.5px; padding-bottom:6.5px; padding-left:20px; padding-right: 20px;" type="submit" class="btn btn-warning"   value="Apply" >
+   
   </div>
-  
-  
   </div>
   
 </div>
   </div>
-  </div>
+</div>
 </div>
 </body>
 </html>
