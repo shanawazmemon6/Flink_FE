@@ -25,15 +25,32 @@ return{
        		return response.data; 
 		})},
 		//delete Job
-		
 		deleteJob:function(id){
 			return $http.get(base_url+"deleteJob/"+id)
 	    	   .then(function(response) {
 	       		console.log(response.data)
 	       		return response.data; 
 	    	   })},
+	    	   
+	   //apply Job
+	     applyJob:function(jobapplied){
+				return $http.post(base_url+"applyJob",jobapplied).
+				then(function(response) {
+					console.log(response.data)
+		       		return response.data; 
+				})
+ 
+	     },
 
-		
+	//get applied job of particular user
+	     userAppliedJob:function(){
+				return $http.get(base_url+"userJob").
+				then(function(response) {
+					 console.log(response.data)
+					return response.data;
+				})
+	     },
+	     
 //all Jobs
   allJob:function(){
 	  return $http.get(base_url+"allJob").

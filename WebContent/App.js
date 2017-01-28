@@ -54,13 +54,20 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		url:'/blog',
 		templateUrl:'Profile/blog/blog.html',
 		 controller :'BlogController'
-	})	
-		.state('userprofile.friend',{
+	})
+	.state('userprofile.friend',{
 			url:'/friend',
 
 		templateUrl:'Profile/friend/Friend.html',
 		 controller :'FriendController'
 	})	
+	.state('userprofile.profilejob',{
+			url:'/profilejob',
+
+		templateUrl:'Profile/job/profilejob.html',
+		 controller :'JobController'
+	})	
+	
 	.state('blog',{
 		url:'/homeblog',
 		templateUrl:'User/homeblog.html',

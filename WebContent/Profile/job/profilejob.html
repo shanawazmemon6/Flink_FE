@@ -3,32 +3,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Job</title>
-<style>
- body{
-    background-image: url("./Resources/image/job.png");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    }
-    .gm{
-    margin-top:10px;
-    }
-    .panel-default{
-    min-width: 200px;
-    min-height: 200px;
-    }
-
-</style>
 </head>
-<body >
-<div class="container" ng-controller='JobController as jctrl' style="margin:80px;">
-
-<div class="alert alert-success text-center apply" style="position:fixed;  left:-50px; top:80px;" >
-  <strong>{{jctrl.error}}</strong> 
-</div>
-
-<div  class=" col-sm-8  col-sm-offset-5"  ng-repeat="job in jctrl.alljobs">
+<body>
+<div  ng-controller='JobController as jctrl' >
+<div   ng-repeat="job in jctrl.jobapply">
 <div class="panel panel-default">
 <div class="panel-body">
 <div class="media">
@@ -39,7 +17,6 @@
     <h4 class="media-heading">{{job.title}}</h4>
     <p>{{job.status}} ( {{job.date_time | date : "medium"}} )</p>
     <p>{{job.qualification}}</p>
-      <input type="submit" ng-click="ctrl.modBlog(blog.blog_id)" class="btn btn-warning" data-toggle="modal" data-target="#myModal" value="More Info..">
     <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -72,8 +49,10 @@
  -->  
     </div>
    <div class="media-right" >
-    <input type="submit"  style="padding-top:6.5px; padding-bottom:6.5px; padding-left:20px; padding-right: 20px;" ng-click="jctrl.submitjob(job.id)" class="btn btn-warning"   value="Apply" >
-  </div>
+         <input type="submit" ng-click="ctrl.modBlog(blog.blog_id)" class="btn btn-warning" data-toggle="modal" data-target="#myModal" value="More Info..">
+   
+<!--     <input type="submit"  style="padding-top:6.5px; padding-bottom:6.5px; padding-left:20px; padding-right: 20px;" ng-click="jctrl.submitjob(job.id)" class="btn btn-warning"   value="Apply" >
+ -->  </div>
   </div>
   </div>
   </div>
