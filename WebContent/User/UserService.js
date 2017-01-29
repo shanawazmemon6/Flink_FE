@@ -14,6 +14,14 @@ app.service('userService',['$http',function($http){
 		},null)
 		
 	},	
+	//updateUser
+	updateUser:function(user){
+		
+	return $http.put(base_url+'updated',user).then
+		(function(response) {
+			return response.data;
+			
+		},null)},	
 	
 	//login authentication
 

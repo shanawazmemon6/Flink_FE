@@ -110,6 +110,32 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 			console.log("logout")
 		
 		}}
+     
+     
+     
+     //update step 1
+     uctrl.up=function(){
+    	 uctrl.user= $rootScope.loginData;
+    	 
+     }
+     
+     
+     //update step 1
+     var updated=function(user){
+		 userService.updateUser(user).then
+		 (function(d) {
+			 $rootScope.loginData=d;
+       	  $cookies.putObject("loginData",d)
+
+			 
+		})}
+     
+    //update submit
+     uctrl.upsubmit=function(){
+    	updated(uctrl.user);
+     }
+     
+     
      //getAllUsers
 	 uctrl.getUsers=function(){
 		userService.fetchAllUsers()

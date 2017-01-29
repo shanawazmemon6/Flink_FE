@@ -1,7 +1,7 @@
 app.controller('JobController',['JobService',function(JobService){
 	
 var job=this;
-job.jobdetails={id:'',title:'',qualification:'',status:'',description:'',date_time:''}
+job.jobdetails={id:'',title:'',qualification:'',status:'',description:'',date_time:'',job_status:'',job_date:''}
 job.upd='';
 job.jobapplied={error: "",code: "",id_job: "",username: "",jobid: "",status_job: "",adate: ""
 	}

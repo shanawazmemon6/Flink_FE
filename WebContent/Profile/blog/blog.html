@@ -23,7 +23,7 @@
         <h4 class="modal-title">Blog</h4>
       </div>
   
-  <form ng-submit="ctrl.submit()">    
+   
 <div class="modal-body">
 
 
@@ -33,10 +33,10 @@
 <input  style="margin-top:5px;" type="text" ng-model="ctrl.blog.writtenby" ng-bind="ctrl.blog.writtenby=loginData.username" hidden="true"  >
 </div>
  <div class="modal-footer">
- <input id="button" ng-hide="ctrl.upd" type="submit" class="btn btn-success"  value="post blog">
- <input id="button" type="submit" ng-show="ctrl.upd" class="btn btn-success"  value="update blog">
+ <input id="button"  type="submit"  ng-hide="ctrl.upd"  class="btn btn-success"  data-dismiss="modal" ng-click="ctrl.submit()"  value="post blog">
+ <input id="button"  type="submit"  ng-show="ctrl.upd" class="btn btn-success"  data-dismiss="modal" ng-click="ctrl.submit()" value="update blog">
  </div>
- </form>
+
     </div>
 </div>
 </div>

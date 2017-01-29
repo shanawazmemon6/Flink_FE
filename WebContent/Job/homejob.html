@@ -39,7 +39,7 @@
     <h4 class="media-heading">{{job.title}}</h4>
     <p>{{job.status}} ( {{job.date_time | date : "medium"}} )</p>
     <p>{{job.qualification}}</p>
-      <input type="submit" ng-click="ctrl.modBlog(blog.blog_id)" class="btn btn-warning" data-toggle="modal" data-target="#myModal" value="More Info..">
+      <input type="submit" ng-click="jctrl.getJob(job.id)" class="btn btn-warning" data-toggle="modal" data-target="#myModal" value="More Info..">
     <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -47,11 +47,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">{{job.title}}</h4>
-        <p>{{job.status}} ( {{job.date_time | date : "medium"}} )</p>
+        <h4 class="modal-title">{{jctrl.jobdetails.title}}</h4>
+        <p>{{jctrl.jobdetails.status}} ( {{jctrl.jobdetails.date_time | date : "medium"}} )</p>
       </div>
       <div class="modal-body">
-        <p>{{job.description}}</p>
+        <p>{{jctrl.jobdetails.description}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
