@@ -89,16 +89,12 @@ app.run(function($rootScope,$location,$http,$state,$cookies){
 		                                               '/admin','/homejob',
 		                                               '/chatforum'
 		                                               ,'/adminjob'])==-1;
-		console.log("navigation"+$location.path());
-		console.log("restrictedPage"+restrictedPage);
-		console.log($state);
+	
 
 		var loggedIn=$cookies.getObject("loginData");
-		console.log("username"+loggedIn);
       
 		if(typeof loggedIn=='undefined'){
 			if(restrictedPage){
-				console.log("not navigating")
 
 			}
 			else{

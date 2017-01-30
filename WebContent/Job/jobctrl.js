@@ -3,7 +3,7 @@ app.controller('JobController',['JobService',function(JobService){
 var job=this;
 job.jobdetails={id:'',title:'',qualification:'',status:'',description:'',date_time:'',job_status:'',job_date:''}
 job.upd='';
-job.jobapplied={error: "",code: "",id_job: "",username: "",jobid: "",status_job: "",adate: ""
+job.jobapplied={error: "",code: "",id_job: "",username: "",jobid: "",status_job: "",adate: "",jobtitle:""
 	}
 job.error="";
 
@@ -73,9 +73,10 @@ job.applyJob=function(jobappiled){
 		})}
       userAppliedJob();
 
-job.submitjob=function(id){
+job.submitjob=function(id,title){
 	job.jobapplied.jobid=id;
 	job.jobapplied.status_job="applied"
+    job.jobapplied.jobtitle=title;
 	job.applyJob(job.jobapplied);
 }
   
