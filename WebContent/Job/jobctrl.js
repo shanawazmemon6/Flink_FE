@@ -65,7 +65,12 @@ job.applyJob=function(jobappiled){
 
 		}
 		})}
-            //applied jobs
+job.updateStatus=function(id,status){
+  	JobService.updateStatus(id,status).then
+  	(function(d){
+  		appliedJob();
+		})}
+            //user applied jobs
       var userAppliedJob=function(){
     	JobService.userAppliedJob().then
     	(function(d){
@@ -73,6 +78,16 @@ job.applyJob=function(jobappiled){
 		})}
       userAppliedJob();
 
+      //applied jobs
+      var appliedJob=function(){
+    	JobService.appliedJob().then
+    	(function(d){
+    	   job.applied=d;	
+		})}
+      appliedJob();
+     
+      
+      
 job.submitjob=function(id,title){
 	job.jobapplied.jobid=id;
 	job.jobapplied.status_job="applied"

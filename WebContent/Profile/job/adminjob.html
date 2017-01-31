@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Job</title>
+</head>
+<body>
+<div  ng-controller='JobController as jctrl' >
+
+<div class="alert alert-success text-center apply" style="position:fixed;  left:-50px; top:80px;" >
+  <strong>{{jctrl.error}}</strong> 
+</div>
+
+<div  ng-repeat="job in jctrl.applied">
+<div class="panel panel-default">
+<div class="panel-body">
+<div class="media">
+  <div class="media-left">
+    <img src="http://placehold.it/150x150" class="media-object" >
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{job.jobtitle}}</h4>
+    <p>{{job.status_job}} ( {{job.adate | date : "medium"}} )</p>
+    <p>{{job.username}}</p>
+      <input type="submit" ng-click="jctrl.getJob(job.jobid)" class="btn btn-warning" data-toggle="modal" data-target="#myModal" value="More Info..">
+    <div id="myModal" class="modal fade" role="dialog">
+  
+  
+  
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">{{jctrl.jobdetails.title}}</h4>
+        <p>{{jctrl.jobdetails.status}} ( {{jctrl.jobdetails.date_time | date : "medium"}} )</p>
+      </div>
+      <div class="modal-body">
+        <p>{{jctrl.jobdetails.description}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+    </div>
+  </div>
+
+</div>
+  <div class="panel-footer">
+  <div class="media">
+ 
+  <div class="media-body">
+<!--<input  style="padding-top:6.5px; padding-bottom:6.5px; padding-left:20px; padding-right: 20px;" type="submit" class="btn btn-warning"   value="Apply" >
+ -->  
+ <input type="submit"  style="padding-top:6.5px; padding-bottom:6.5px; padding-left:20px; padding-right: 20px;" ng-click="jctrl.updateStatus(job.id_job,'accepted')" class="btn btn-success"   value="Accept" >
+    </div>
+   <div class="media-right" >
+       
+   
+    <input type="submit"  style="padding-top:6.5px; padding-bottom:6.5px; padding-left:20px; padding-right: 20px;" ng-click="jctrl.updateStatus(job.id_job,'rejected')" class="btn btn-danger"   value="Reject" >
+  </div>
+  </div>
+  </div>
+  </div>
+ </div>
+ </div>
+</body>
+</html>

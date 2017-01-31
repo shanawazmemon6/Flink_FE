@@ -2,7 +2,7 @@ var app=angular.module('myApp',['ui.router','ngCookies']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
 	   $urlRouterProvider.otherwise('/home')
-	$urlRouterProvider.when("/profile", "/profile/profilejob");
+	$urlRouterProvider.when("/profile", "/profile/chatforum");
 
 	 $stateProvider
 	
@@ -71,7 +71,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl:'Profile/job/profilejob.html',
 		 controller :'JobController'
 	})	
-	
+	.state('userprofile.adminjob',{
+			url:'/adminjob',
+
+		templateUrl:'Profile/job/adminjob.html',
+		 controller :'JobController'
+	})	
 	.state('blog',{
 		url:'/homeblog',
 		templateUrl:'User/homeblog.html',

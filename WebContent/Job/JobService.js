@@ -50,6 +50,25 @@ return{
 					return response.data;
 				})
 	     },
+	     //allJobApplied
+	     appliedJob:function(){
+				return $http.get(base_url+"allJobApplied").
+				then(function(response) {
+					 console.log(response.data)
+					return response.data;
+				})
+	     },
+	     
+	     //update status
+	     updateStatus:function(id,status){
+				return $http.get(base_url+"updateJobStatus/"+id+"/"+status).
+				then(function(response) {
+					 console.log(response.data)
+					return response.data;
+				})
+	     },
+	     
+	     
 	     
 //all Jobs
   allJob:function(){
