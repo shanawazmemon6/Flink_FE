@@ -36,6 +36,16 @@ margin-top:10px;
 
 }
 </style>
+<script >
+$(document).on('click', '.browse', function(){
+	  var file = $(this).parent().parent().parent().find('.file');
+	  file.trigger('click');
+	});
+	$(document).on('change', '.file', function(){
+	  $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+	});
+
+</script>
 
 </head>
 <body >
@@ -74,6 +84,12 @@ margin-top:10px;
 <div class="panel panel-default" id="display_panel">
   <div class="panel-heading text-center"  id="display_body">
             <img id="display" src="http://placehold.it/500x500" >
+
+
+ <input type="file"  file-model="myFile" class="btn  btn-block">
+
+ <input type="submit" ng-click="cntrl.imageUpload()"  value="upload">
+            
   
  </div>
   <div class="panel-body">

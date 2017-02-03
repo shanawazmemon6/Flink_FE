@@ -2,7 +2,7 @@ var app=angular.module('myApp',['ui.router','ngCookies']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
 	   $urlRouterProvider.otherwise('/home')
-	$urlRouterProvider.when("/profile", "/profile/chatforum");
+	$urlRouterProvider.when("/profile", "/profile/blog");
 
 	 $stateProvider
 	
@@ -112,8 +112,21 @@ app.run(function($rootScope,$location,$http,$state,$cookies){
 		}
 		
 	})
+	})
 	
-	
-	
-	
-})
+	app.directive('fileModel', ['$parse', function ($parse) {
+	    return {
+	        restrict: 'A',
+	        link: function(scope, element, attrs) {
+	            var model = $parse(attrs.fileModel);
+	            var modelSetter = model.assign;
+	            
+	            element.bind('change', function(){
+	                scope.$apply(function(){
+	                    modelSetter(scope, element[0].files[0]);
+	                });
+	            });
+	        }
+	    };
+	}]);
+

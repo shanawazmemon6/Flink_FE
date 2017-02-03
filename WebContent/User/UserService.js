@@ -1,6 +1,7 @@
 
-app.service('userService',['$http',function($http){
+app.service('userService',['$http','$q',function($http,$q){
 	var base_url='http://localhost:8086/Flink_BE/';
+	 var deffered = $q.defer();
 	return{
 	
 	//saveUser
@@ -14,6 +15,29 @@ app.service('userService',['$http',function($http){
 		},null)
 		
 	},	
+	
+	imageUpload:function(file){
+		var fd = new FormData();
+		fd.append("file",file);
+		console.log(fd)
+		 $http.post(base_url+"upload", fd, {
+            withCredentials: false,
+            headers: {
+              'Content-Type': undefined
+            },
+            transformRequest: angular.identity,
+            
+            responseType: "arraybuffer"
+          }) .success(function(){
+        	  console.log("success")
+          })
+          .error(function(){
+        	  console.log("error")
+
+          });
+		
+	},
+	
 	//updateUser
 	updateUser:function(user){
 		

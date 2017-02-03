@@ -1,4 +1,4 @@
-app.controller('UserController',['$cookies','userService','$rootScope','$http','$location',function($cookies,userService,$rootScope,$http,$location){
+app.controller('UserController',['$cookies','userService','$rootScope','$scope','$http','$location',function($cookies,userService,$rootScope,$scope,$http,$location){
   
 	var uctrl=this;
 	
@@ -7,7 +7,11 @@ app.controller('UserController',['$cookies','userService','$rootScope','$http','
 	    	   
 	 };
 	
-	
+	uctrl.imageUpload=function(){
+        var file = $scope.myFile;
+         console.log(file)
+		userService.imageUpload(file)
+	}
 	
 	uctrl.newfriend=[];
 	
