@@ -10,7 +10,7 @@
 <div ng-repeat="msg in cctrl.messages">
 <div class="media" ng-if="loginData.username==msg.username">
   <div class="media-left" >
-    <img src="http://placehold.it/50x50" class="media-object">
+    <img width="50px" height="50px" ng-src="./Resources/userimage/{{msg.username}}.jpg" class="media-object">
   </div>
   <div class="media-body" >
     <h4 class="media-heading">{{msg.username}}</h4>
@@ -30,7 +30,7 @@
     <p dir="rtl">{{msg.message}}</p>
   </div>
   <div class="media-right">
-    <img src="http://placehold.it/50x50" class="media-object" style="width:60px">
+    <img width="50px" height="50px" ng-src="./Resources/userimage/{{msg.username}}.jpg" class="media-object" style="width:60px">
   </div>
 </div>
 <hr>

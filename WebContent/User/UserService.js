@@ -20,6 +20,8 @@ app.service('userService',['$http','$q',function($http,$q){
 		var fd = new FormData();
 		fd.append("file",file);
 		console.log(fd)
+				console.log(file)
+
 		 $http.post(base_url+"upload", fd, {
             withCredentials: false,
             headers: {
@@ -37,7 +39,30 @@ app.service('userService',['$http','$q',function($http,$q){
           });
 		
 	},
-	
+	registerimageUpload:function(file,user){
+		var fd = new FormData();
+		fd.append("file",file);
+		fd.append("user",user),
+				console.log(file)
+				console.log(user)
+
+		 $http.post(base_url+"registerupload", fd, {
+            withCredentials: false,
+            headers: {
+              'Content-Type': undefined
+            },
+            transformRequest: angular.identity,
+            
+            responseType: "arraybuffer"
+          }) .success(function(){
+        	  console.log("success")
+          })
+          .error(function(){
+        	  console.log("error")
+
+          });
+		
+	},
 	//updateUser
 	updateUser:function(user){
 		

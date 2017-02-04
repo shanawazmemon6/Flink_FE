@@ -6,6 +6,10 @@ app.controller('UserController',['$cookies','userService','$rootScope','$scope',
 	    	password:'',mobile:'',role:'',gender:'',dateofbirth:'',address:'',is_online:'',status:'',error:'',code:''	   
 	    	   
 	 };
+
+		
+		  
+		
 	
 	uctrl.imageUpload=function(){
         var file = $scope.myFile;
@@ -20,21 +24,7 @@ app.controller('UserController',['$cookies','userService','$rootScope','$scope',
 			 console.log($rootScope.loginData.username)
 		 }
 
-	//console.log("controller is working")
-   //save user
-	 uctrl.saveUser=function(user){
-		userService.saveUser(user).then
-		(function(data){
-			if(data.code=='200'){
-			var regresponse=data
-            $location.path("/login");
-			}
-			console.log(regresponse)
-		},function(errorResponse){
-			console.log("controller error")
-			
-		})
-	}
+   
 	
 	//login authentication
 	 uctrl.loginAuthentication=function(user){
@@ -154,10 +144,7 @@ app.controller('UserController',['$cookies','userService','$rootScope','$scope',
 			})//then
 			}//getUsers
 	  
-	// submit//register submit
-	 uctrl.submit=function(){
-		 uctrl.saveUser(uctrl.user)
-		 }
+	
 	   //login submit
 	 uctrl.submitlogin=function(){
 		 uctrl.loginAuthentication(uctrl.user)

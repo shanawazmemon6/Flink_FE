@@ -25,10 +25,11 @@ position: relative;
   overflow: hidden;
   padding:0px;
   
-   height: 400px;
+   height: 300px;
 }
 #display{
    max-width: 100%;
+   max-height: 
 
 }
 .input-group{
@@ -36,16 +37,7 @@ margin-top:10px;
 
 }
 </style>
-<script >
-$(document).on('click', '.browse', function(){
-	  var file = $(this).parent().parent().parent().find('.file');
-	  file.trigger('click');
-	});
-	$(document).on('change', '.file', function(){
-	  $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
-	});
 
-</script>
 
 </head>
 <body >
@@ -83,16 +75,10 @@ $(document).on('click', '.browse', function(){
 <div class="col-sm-4" >
 <div class="panel panel-default" id="display_panel">
   <div class="panel-heading text-center"  id="display_body">
-            <img id="display" src="http://placehold.it/500x500" >
-
-
- <input type="file"  file-model="myFile" class="btn  btn-block">
-
- <input type="submit" ng-click="cntrl.imageUpload()"  value="upload">
-            
-  
- </div>
+       <img id="display" ng-src="./Resources/userimage/{{loginData.username}}.jpg"> </div>
   <div class="panel-body">
+   <button type="button"  style="margin-bottom:10px; " class="btn btn-info btn-block" data-toggle="modal" data-target="#uploadModal">Update Profile Picture</button>
+  
    <span> <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i></span><span>  <b>{{loginData.username}}</b></span><br>
    <span> <i class="fa fa-envelope fa-lg" aria-hidden="true"></i></span><span>  <b>{{loginData.email}}</b></span><br>
    <span> <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i></span> <span>  <b>{{loginData.mobile}}</b></span><br>
@@ -170,7 +156,30 @@ $(document).on('click', '.browse', function(){
     </div>
 </div>
 </div>
+<div id="uploadModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Update Profile Picture</h4>
+      </div>
+      <div class="modal-body">
+        <p></p>
+        <input type="file"  file-model="myFile" class="btn  btn-block">
+        <img>
+      </div>
+      <div class="modal-footer">
+      <input type="submit" class="btn btn-default" ng-click="cntrl.imageUpload()" value="Upload" data-dismiss="modal">
+      </div>
+    </div>
+
+  </div>
 </div>
+</div>
+
+
 
 </body>
 </html>
