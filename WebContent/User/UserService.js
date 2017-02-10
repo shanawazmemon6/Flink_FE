@@ -16,7 +16,7 @@ app.service('userService',['$http','$q',function($http,$q){
 		
 	},	
 	
-	imageUpload:function(file){
+	imageProfileUpload:function(file){
 		var fd = new FormData();
 		fd.append("file",file);
 		console.log(fd)
@@ -39,6 +39,30 @@ app.service('userService',['$http','$q',function($http,$q){
           });
 		
 	},
+	imageCoverUpload:function(file){
+		var fd = new FormData();
+		fd.append("file",file);
+		console.log(fd)
+				console.log(file)
+
+		 $http.post(base_url+"coverupload", fd, {
+            withCredentials: false,
+            headers: {
+              'Content-Type': undefined
+            },
+            transformRequest: angular.identity,
+            
+            responseType: "arraybuffer"
+          }) .success(function(){
+        	  console.log("success")
+          })
+          .error(function(){
+        	  console.log("error")
+
+          });
+		
+	},
+	
 	registerimageUpload:function(file,user){
 		var fd = new FormData();
 		fd.append("file",file);

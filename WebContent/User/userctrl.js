@@ -12,9 +12,17 @@ app.controller('UserController',['$cookies','userService','$rootScope','$scope',
 		
 	
 	uctrl.imageUpload=function(){
-        var file = $scope.myFile;
-         console.log(file)
-		userService.imageUpload(file)
+		if(uctrl.status=='profile'){
+			var file = $scope.myFile;
+	         console.log(file)
+			userService.imageProfileUpload(file)
+		}
+		if(uctrl.status=='cover'){
+			var file = $scope.myFile;
+	         console.log(file)
+			userService.imageCoverUpload(file)
+		}
+        
 	}
 	
 	uctrl.newfriend=[];
@@ -23,6 +31,11 @@ app.controller('UserController',['$cookies','userService','$rootScope','$scope',
 		 if(typeof  $rootScope.loginData!='undefined')	{
 			 console.log($rootScope.loginData.username)
 		 }
+	 
+	 uctrl.prup=function(value){
+		 uctrl.status=value;
+		 console.log( uctrl.status)
+	 }
 
    
 	
